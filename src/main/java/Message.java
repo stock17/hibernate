@@ -1,6 +1,18 @@
+import javax.persistence.*;
+
+@Entity
+@Table(name = "MESSAGES")
 public class Message {
+
+    @Id @GeneratedValue
+    @Column(name = "MESSAGE_ID")
     private long id;
+
+    @Column(name = "MESSAGE_TEXT")
     private String text;
+
+    @ManyToOne (cascade = CascadeType.ALL)
+    @JoinColumn(name = "NEXT_MESSAGE_ID")
     private Message nextMessage;
 
     Message(){}
